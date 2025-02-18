@@ -1,0 +1,176 @@
+{% extends "base.html" %}
+{% block title %}NeighbourGoods - {{ current_user.first_name }}'s Profile{% endblock %}
+{% block content %}
+<div class="profile-container">
+    <div class="profile-header">
+        <h1>Welcome, {{ current_user.first_name }}!</h1>
+        <p class="subtitle">Manage your NeighbourGoods profile</p>
+    </div>
+    <div class="profile-content">
+        <div class="profile-card personal-info">
+            <h2>Personal Information</h2>
+            <div class="info-item">
+                <span class="info-label">Name</span>
+                <span class="info-value">{{ current_user.first_name }} {{ current_user.last_name }}</span>
+            </div>
+            <div class="info-item">
+                <span class="info-label">Email</span>
+                <span class="info-value">{{ current_user.email }}</span>
+            </div>
+            <div class="info-item">
+                <span class="info-label">Phone</span>
+                <span class="info-value">{{ current_user.phone }}</span>
+            </div>
+        </div>
+        <div class="profile-card account-activity">
+            <h2>Account Activity</h2>
+            <div class="info-item">
+                <span class="info-label">Total Orders</span>
+                <span class="info-value">{{ current_user.orders|length }}</span>
+            </div>
+            <!-- Add more activity information as needed -->
+        </div>
+    </div>
+    <div class="profile-actions">
+        <a href="{{ url_for('logout') }}" class="button button-secondary">Logout</a>
+    </div>
+</div>
+{% endblock %}
+{% block styles %}
+<style>
+    :root {
+        --primary-color: #4a90e2;
+        --secondary-color: #f44336;
+        --background-color: #f5f7fa;
+        --card-background: #ffffff;
+        --text-color: #333333;
+        --text-light: #666666;
+        --border-color: #e0e0e0;
+        --shadow-color: rgba(0, 0, 0, 0.1);
+    }
+
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background-color: var(--background-color);
+        color: var(--text-color);
+        line-height: 1.6;
+        margin: 0;
+        padding: 0;
+    }
+
+    .profile-container {
+        max-width: 900px;
+        margin: 40px auto;
+        padding: 30px;
+    }
+
+    .profile-header {
+        text-align: center;
+        margin-bottom: 40px;
+    }
+
+    .profile-header h1 {
+        color: var(--primary-color);
+        font-size: 2.8em;
+        margin-bottom: 10px;
+        font-weight: 600;
+    }
+
+    .subtitle {
+        color: var(--text-light);
+        font-size: 1.2em;
+        margin-top: 0;
+    }
+
+    .profile-content {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 30px;
+    }
+
+    .profile-card {
+        flex-basis: calc(50% - 15px);
+        background-color: var(--card-background);
+        border-radius: 10px;
+        box-shadow: 0 5px 15px var(--shadow-color);
+        padding: 25px;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .profile-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 20px var(--shadow-color);
+    }
+
+    .profile-card h2 {
+        color: var(--primary-color);
+        font-size: 1.6em;
+        margin-top: 0;
+        margin-bottom: 20px;
+        border-bottom: 2px solid var(--border-color);
+        padding-bottom: 10px;
+    }
+
+    .info-item {
+        margin-bottom: 15px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .info-label {
+        font-weight: 600;
+        color: var(--text-light);
+    }
+
+    .info-value {
+        color: var(--text-color);
+    }
+
+    .profile-actions {
+        text-align: center;
+        margin-top: 40px;
+    }
+
+    .button {
+        display: inline-block;
+        padding: 12px 24px;
+        background-color: var(--primary-color);
+        color: white;
+        text-decoration: none;
+        border-radius: 30px;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        border: none;
+        cursor: pointer;
+    }
+
+    .button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 10px rgba(74, 144, 226, 0.3);
+    }
+
+    .button-secondary {
+        background-color: var(--secondary-color);
+    }
+
+    .button-secondary:hover {
+        box-shadow: 0 4px 10px rgba(244, 67, 54, 0.3);
+    }
+
+    @media (max-width: 768px) {
+        .profile-card {
+            flex-basis: 100%;
+        }
+
+        .profile-container {
+            padding: 20px;
+        }
+
+        .profile-header h1 {
+            font-size: 2.2em;
+        }
+    }
+</style>
+{% endblock %}

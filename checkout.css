@@ -1,0 +1,106 @@
+.checkout-container {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: white;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+.checkout-container h2 {
+    font-size: 32px;
+    margin-bottom: 20px;
+    color: #3c3b6e;
+    text-align: center;
+}
+
+.checkout-container form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.checkout-container label {
+    font-size: 18px;
+}
+
+.checkout-container input[type="text"],
+.checkout-container input[type="email"],
+.checkout-container input[type="number"],
+.checkout-container select {
+    padding: 10px;
+    font-size: 18px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    width: 100%;
+    transition: border-color 0.3s ease;
+}
+
+.checkout-container input[type="text"]:focus,
+.checkout-container input[type="email"]:focus,
+.checkout-container input[type="number"]:focus,
+.checkout-container select:focus {
+    border-color: #3c3b6e;
+    outline: none;
+}
+
+.checkout-container input[type="submit"] {
+    background-color: #3c3b6e;
+    color: white;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 18px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.checkout-container input[type="submit"]:hover {
+    background-color: #3c3b6e;
+    transform: scale(1.05);
+}
+
+.order-summary {
+    margin-top: 30px;
+}
+
+.order-summary h3 {
+    font-size: 24px;
+    margin-bottom: 15px;
+    color: #4B0082;
+}
+
+.order-summary ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.order-summary ul li {
+    font-size: 18px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.order-summary ul li span {
+    color: #B12704;
+}
+
+.total-amount {
+    font-size: 20px;
+    font-weight: bold;
+    color: #000000;
+}
+
+.payment-method-container {
+    display: none;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.card-details-container,
+.upi-details-container {
+    display: none;
+    flex-direction: column;
+    gap: 10px;
+}

@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block title %}NeighbourGoods - Login{% endblock %}
+{% block content %}
+<div class="login-container">
+    <h2>Login to NeighbourGoods</h2>
+    <form method="POST" action="{{ url_for('login') }}" class="login-form">
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+        </div>
+        
+        <div class="form-group password-container">
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+            <span class="password-toggle" onclick="togglePassword('password')">
+                <i class="fas fa-eye"></i>
+            </span>
+        </div>
+        
+        <button type="submit" class="btn-login">Login</button>
+    </form>
+    <div class="login-links">
+        <p>Don't have an account? <a href="{{ url_for('create_account') }}">Create one here</a></p>
+        <p>Forgot your password? <a href="{{ url_for('forgot_password') }}">Reset it here</a></p>
+    </div>
+</div>
+{% endblock %}

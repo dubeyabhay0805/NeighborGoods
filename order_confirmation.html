@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block title %}NeighbourGoods - Order Confirmation{% endblock %}
+{% block content %}
+<div class="container mt-4">
+    <h2>Order Confirmation</h2>
+    <p>Thank you for your order!</p>
+    <h3>Order Details</h3>
+    <p>Order ID: {{ order.id }}</p>
+    <p>Total Amount: ₹{{ order.total_amount }}</p>
+    <p>Shipping Address: {{ order.shipping_address }}</p>
+    <p>Payment Method: {{ order.payment_method }}</p>
+    <p>Status: {{ order.status }}</p>
+    <h4>Items</h4>
+    <ul>
+        {% for item in order.items %}
+        <li>{{ item.product_name }} - Quantity: {{ item.quantity }} - Price: ₹{{ item.price }}</li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}

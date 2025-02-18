@@ -1,0 +1,85 @@
+{% extends "base.html" %}
+{% block title %}NeighbourGoods - Search Results{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2 class="mb-4">
+        {% if query %}
+            You searched for "{{ query }}"
+        {% else %}
+            Our Products
+        {% endif %}
+    </h2>
+    <div class="search-container">
+        <form class="search-bar" action="{{ url_for('search') }}" method="get">
+            <input type="text" name="query" placeholder="Search for products or shops..." value="{{ query }}">
+            <button type="submit">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+                Search
+            </button>
+        </form>
+    </div>
+    {% if results %}
+        <div class="row row-cols-2 row-cols-md-4 row-cols-lg-5 g-3">
+            {% for item in results %}
+                <div class="col">
+                    <div class="card h-100">
+                        <img src="{{ item['image_url'] }}" class="card-img-top" alt="{{ item['name'] }}">
+                        <div class="card-body">
+                            <h6 class="card-title">{{ item['name'] }}</h6>
+                            <p class="card-text">₹{{ item['price'] }}</p>
+                            <form action="{{ url_for('add_to_cart', item_id=loop.index0) }}" method="POST">
+                                <div class="input-group input-group-sm mb-2">
+                                    <input type="number" class="form-control" name="quantity" value="1" min="1" max="10">
+                                    <button class="btn btn-primary btn-sm" type="submit">Add</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <div class="alert alert-info">
+            <p>No results found for "{{ query }}". Please try a different search term.</p>
+            <a href="{{ url_for('home') }}" class="btn btn-primary mt-2">Continue Shopping</a>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}
+
+{% block styles %}
+<style>
+    .card-img-top {
+        height: 150px;
+        object-fit: cover;
+    }
+    .card {
+        transition: transform 0.2s;
+        font-size: 0.9rem;
+    }
+    .card:hover {
+        transform: scale(1.03);
+    }
+    .card-title {
+        font-size: 1rem;
+    }
+    .card-text {
+        font-size: 0.9rem;
+    }
+    .alert {
+        font-size: 1rem;
+    }
+    .btn-primary {
+        background-color: #007bff;
+        border-color: #007bff;
+    }
+    .btn-primary:hover {
+        background-color: #0056b3;
+        border-color: #0056b3;
+    }
+</style>
+{% endblock %}

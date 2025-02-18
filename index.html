@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block title %}NeighbourGoods - Home{% endblock %}
+
+{% block content %}
+<div class="search-container">
+  <form class="search-bar" action="{{ url_for('search') }}" method="get">
+    <input type="text" name="query" placeholder="Search for products or shops...">
+    <button type="submit">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="11" cy="11" r="8"></circle>
+        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+      </svg>
+      Search
+    </button>
+  </form>
+</div>
+<div id="home" class="page show">
+    <section class="hero">
+        <div>
+            <h1>Welcome to NeighbourGoods</h1>
+            <p>Connecting you to nearby products and local sellers in your community.</p>
+            <a href="{{ url_for('search') }}" class="button">Start Shopping</a>
+        </div>
+        <img src="{{ url_for('static', filename='images/hero.jpg') }}" alt="grocery Image">
+    </section>
+</div>
+
+
+{% endblock %}
